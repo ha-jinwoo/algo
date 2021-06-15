@@ -27,27 +27,54 @@
 //   while(ss >> k) cout << k << endl;
 // }
 
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
 
-using namespace std;
-int main(){
-  vector <string> input(3, "");	// given input
-  input[0] = "1 Kim 89";
-  input[1] = "2 Moon 100";
-  input[2] = "3 Chan 78";
+// using namespace std;
+// int main(){
+//   vector <string> input(3, "");	// given input
+//   input[0] = "1 Kim 89";
+//   input[1] = "2 Moon 100";
+//   input[2] = "3 Chan 78";
 
-  for(int i = 0; i < input.size(); i++)
-  {
-    int num, score;
-    string name;
+//   for(int i = 0; i < input.size(); i++)
+//   {
+//     int num, score;
+//     string name;
 
-    stringstream ss;	
-    ss.str(input[i]);
+//     stringstream ss;	
+//     ss.str(input[i]);
 
-    ss >> num;
-    ss >> name;
-    ss >> score;
+//     ss >> num;
+//     ss >> name;
+//     ss >> score;
 
-    cout << num << " " << name << " " << score << endl;
-  }
+//     cout << num << " " << name << " " << score << endl;
+//   }
+// }
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int main() {
+//   istringstream iss("test 123 123hah ahha");
+//   string str, str1, str2;
+//   int inta;
+
+//   cout<< iss.str() <<endl;
+//   iss >> str >> str1 >> str2 >> inta;
+//   cout<<"str  : "<< str  <<endl;
+//   cout<<"str1 : "<< str1 <<endl;
+//   cout<<"str2 : "<< str2 <<endl;
+//   cout<<"inta : "<< inta <<endl;
+// }
+
+#include<iostream>
+#include<sstream>
+
+int main() {
+  std::ostringstream oss;
+  int inta = 10;
+  std::string str = " test_string";
+  oss << "test " << inta << str <<std::endl;
+  std::cout<< oss.str();
 }
