@@ -4,6 +4,7 @@
 using namespace std;
 
 int main(){
+  // freopen("Input.txt", "r", stdin);
   int N,score;
   cin>>N;
 
