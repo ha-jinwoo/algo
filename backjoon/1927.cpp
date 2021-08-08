@@ -4,21 +4,19 @@
 using namespace std;
 
 int main(){
-  // freopen("Input.txt", "r", stdin);
-
   ios_base::sync_with_stdio(0);
   cin.tie(0);
   cout.tie(0);
 
-  int n,m,r;
+  int n,m;
   cin>>n;
   priority_queue <int, vector<int>, greater<int> > pq;
   while(n--){
     cin>>m;
     if(!m){
-      if(!pq.size()) cout<<"0"<<endl; 
+      if(!pq.size()) cout<<"0"<<"\n"; 
       else{
-        cout<<pq.top()<<endl;
+        cout<<pq.top()<<"\n";
         pq.pop();
       } 
     }
