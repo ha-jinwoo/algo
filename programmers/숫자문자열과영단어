@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int solution(string s) {
+    string answer = "";
+	string temp = "";
+    string arr[10] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    for(char c : s){
+    	if(isdigit(c)) answer+=c;
+    	else{
+    		temp+=c;
+    		for(int i = 0; i<10; i++){
+    			if(temp == arr[i]){
+    				temp = "";
+    				answer += i+'0';
+    			}
+    		}
+    	}
+    }
+    return stoi(answer);
+}
