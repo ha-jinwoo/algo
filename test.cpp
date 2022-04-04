@@ -2,62 +2,65 @@
 
 using namespace std;
 
-int sizes[200002];
-int link[200002];
-
-int finds(int x) {
-	if (link[x] == x) return x;
-	return link[x] = finds(link[x]);
+const char *number2comma(long long n){
+  static char comma_str[64]; 
+  char str[64]; int idx, len, cidx = 0, mod; 
+  sprintf(str, "%ld", n); 
+  len = strlen(str); mod = len % 3; 
+  for(idx = 0; idx < len; idx++) { 
+    if(idx != 0 && (idx) % 3 == mod) { 
+      comma_str[cidx++] = ','; 
+    } 
+    comma_str[cidx++] = str[idx]; 
+  } 
+  comma_str[cidx] = 0x00; 
+  return comma_str; 
 }
 
-void unite(int a, int b) {
-	a = finds(a);
-	b = finds(b);
+const char *number2comma2(long long n){
+  static char comma_str[64]; 
+  char str[64]; int idx, len, cidx = 0, mod; 
+  sprintf(str, "%ld", n); 
+  len = strlen(str); mod = len % 3; 
+  for(idx = 0; idx < len; idx++) { 
+    if(idx != 0 && (idx) % 3 == mod) { 
+      comma_str[cidx++] = ','; 
+    } 
+    comma_str[cidx++] = str[idx]; 
+  } 
+  comma_str[cidx] = 0x00; 
+  return comma_str; 
+}
+
+int main(){
+  double a,b;
+  long long money;
+  cin>>a>>b>>money;
+  
+  double c=a,d=b;
+  vector<double> k;
+  vector<double> y;
+
+  for(int i = 0; i<20; i++){
+    a*=1.03;
+    b*=1.09;
     
-  if( a != b ){
-  if (sizes[a] < sizes[b]) swap(a, b);
-  sizes[a] += sizes[b];
-  link[b] = a;
+    k.push_back(a);
+    y.push_back(b);
   }
-}
 
-int main() {
+  for(int i = 19; i>=0; i--){
+    long long be = money*int(round(y[i]/d * 100))/100-money;
+    cout<<(i+1)*3<<"%"<<"       "<<round(k[i])<<"       "<<round(y[i] * 100) / 100<<"       "<<round(y[i]/d * 100)<<"%"<<"       "<<number2comma(money*int(round(y[i]/d * 100))/100)<<"       "<<number2comma2(be)<<endl;
+  }
 
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-
-	int t, F, p1, p2;
-	cin >> t;
-
-	string in1, in2;
-
-	for (int T = 0; T < t; T++) {
-		cin >> F;
-
-		// 초기화하기
-		for (int i = 0; i < 200002; i++) {
-			sizes[i] = 1;
-			link[i] = i;
-		}
-		map<string, int> map;
-		int nodeNum = 1;
-
-		for (int i = 0; i < F; i++) {
-			// union
-			cin >> in1 >> in2;
-
-			// map 에 in1이 없었을 경우, 그 map에 노드 번호로 지정
-			if (map.count(in1) == 0) map[in1] = nodeNum++;		
-			if (map.count(in2) == 0) map[in2] = nodeNum++;
-			
-            unite(map[in1], map[in2]);
-            
-            p1 = finds(map[in1]);
-            p2 = finds(map[in2]);
-            
-			cout << max(sizes[p1], sizes[p2]) << '\n';	
-		}
-	}
-    
-    return 0;
+  a=c;
+  b=d;
+  cout<<"0%"<<"       "<<round(a)<<"       "<<round(b * 100) / 100<<"       "<<round(b/d * 100)<<"%"<<"       "<<number2comma(money)<<"       "<<"0"<<endl;
+  for(int i = 0; i<20; i++){
+    a*=0.97;
+    b*=0.91;
+    long long be = money-money*int(round(b/d * 100))/100;
+    cout<<"-"<<(i+1)*3<<"%"<<"       "<<round(a)<<"       "<<round(b * 100) / 100<<"       "<<round(b/d * 100)<<"%"<<"       "<<number2comma(money*int(round(b/d * 100))/100)<<"       -"<<number2comma2(be)<<endl;
+  }
 }
