@@ -1,9 +1,0 @@
-node_modules
-.env
-.gitattributes
-*.exe
-.vscode
-*.txt
-next/
-/test.cpp
-.gitignore
